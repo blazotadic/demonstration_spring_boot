@@ -42,10 +42,17 @@ public class RoleController {
             .orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
-    @GetMapping(value = "all")
-    public ResponseEntity<List<Role>> all()
+    @GetMapping(value = "one/{id}")
+    public ResponseEntity<RoleDTO> one(@PathVariable Integer id)
     {
-        List<Role> roles = roleService.findAll();
+        RoleDTO role = roleService.findOne(id);
+        return new ResponseEntity<>(role, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "search/by-name-or-desc")
+    public ResponseEntity<List<RoleDTO>> searchByNameOrDesc(@RequestParam(value = "part") String part)
+    {
+        List<RoleDTO> roles = roleService.search(part);
         return new ResponseEntity<>(roles, HttpStatus.OK);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demonstration_spring_boot.repository;
 
+import com.example.demonstration_spring_boot.dto.RoleDTO;
 import com.example.demonstration_spring_boot.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,11 +13,10 @@ import java.util.List;
 public interface RoleRepository extends JpaRepository<Role, Integer>
 {
 
-    List<Role> findByName(String name); // JPA - SELECT * FROM role WHERE name = name
+    List<RoleDTO> findByNameStartingWithOrDescriptionStartingWith(
+            String namePart, String descriptionPart
+    );
 
-    @Query(value = "select role from Role as role where role.name = :roleName")
-    List<Role> findByNameWithJpql(@Param("roleName") String name);
-    // JPQL - SELECT * FROM role WHERE name = name
-
-
+    @Query(value = "select role from Role role where role.id = :id")
+    Role findOneById(Integer id);
 }

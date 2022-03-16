@@ -7,6 +7,7 @@ import com.example.demonstration_spring_boot.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,13 @@ public class RoleService {
         return roleExists ? Optional.of(save(roleDTO)) : Optional.empty();
     }
 
-    public List<Role> findAll() {
-        return roleRepository.findAll();
+    public RoleDTO findOne(Integer id) {
+
+        return roleMapper.toDTO(roleRepository.findOneById(id));
+    }
+
+    public List<RoleDTO> search(String part) {
+        // WHERE NAME LIKE :part OR description LIKE :part
+        return roleRepository.findByNameStartingWithOrDescriptionStartingWith(part, part);
     }
 }
