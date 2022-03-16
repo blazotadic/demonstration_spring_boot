@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: Demostration Application
+  profiles:
+    active: dev
+
+  # Cache Configuration
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+
+  # Liquibase Configuration
+  liquibase:
+    change-log: classpath:liquibase/master.xml
+
+db-url: test123
+
+jwt:
+  secret: ZGVtb25zdHJhdGlvbl9wcm9qZWN0  # kod u b64 formatu demonstration_project
+  validityInMinutes: 5  # vrijeme trajanja tokena
