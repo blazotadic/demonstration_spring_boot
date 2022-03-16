@@ -35,6 +35,6 @@ public class Role {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
-    @ToString.Exclude
+    @ToString.Exclude   //lombok - iskljucivanje iz stri ga jer jer @JsonIgnore
     private Set<com.example.demonstration_spring_boot.entity.User> users = new HashSet<>();
 }

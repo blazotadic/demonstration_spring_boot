@@ -41,7 +41,7 @@ public class User {
     @Column
     private String password;
 
-    @Temporal(value = TemporalType.TIMESTAMP) // TemporalType.TIMESTAMP | TemporalType.TIME
+    @Temporal(value = TemporalType.TIMESTAMP) //datum i vrijeme / TemporalType.TIMESTAMP | TemporalType.TIME
     @Column(name = "created_at")
     private Date createdAt;
 

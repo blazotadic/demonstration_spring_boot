@@ -43,4 +43,11 @@ public class UserController {
         return new ResponseEntity<>(Collections.singletonMap("status", existsStatus), HttpStatus.OK);
     }
 
+    @PostMapping(value = "store")
+    public ResponseEntity<UserWithDetailDTO> store(@RequestBody UserWithDetailDTO userWithDetailDTO)
+    {
+        UserWithDetailDTO user = userService.save(userWithDetailDTO);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
+    }
+
 }

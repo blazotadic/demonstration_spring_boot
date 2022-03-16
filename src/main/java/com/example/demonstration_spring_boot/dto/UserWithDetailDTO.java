@@ -16,7 +16,6 @@ public class UserWithDetailDTO {
     private String lastName;
     private String username;
     private String password;
-    private String passwordConfirm;
     private Date createdAt;
     private UserDetailDTO userDetail;
     private Boolean isActive;
