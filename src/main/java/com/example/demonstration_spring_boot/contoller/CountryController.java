@@ -19,17 +19,17 @@ public class CountryController {
 
     private final CountryService countryService;
 
-    @GetMapping
+    @GetMapping(value =  "/pageable")
     public ResponseEntity<Page<Country>> findPageable(Pageable pageable)
     {
-        Page<Country> countryPage = countryService.findPageble(pageable);
+        Page<Country> countryPage = countryService.findPageable(pageable);
         return new ResponseEntity<>(countryPage, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/pageable/list")
-    public ResponseEntity<List<Country>> findAllBetterMethodPageable(Pageable pageable)
+    @GetMapping(value = "/pageable/better/method")
+    public ResponseEntity<List<Country>> findAllBetterMethod(Pageable pageable)
     {
-        List<Country> countries = countryService.findAllBetterMethodPageable(pageable);
+        List<Country> countries = countryService.findAllBetterMethod(pageable);
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 

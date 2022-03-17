@@ -1,0 +1,30 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="2022031720510000" author="blazo" context="dev">
+
+        <sql>
+            INSERT INTO city(name, country_id)
+            VALUES
+            ('Podgorica', 1),
+            ('Niksic', 1),
+            ('Berane', 1),
+            ('Beograd', 2),
+            ('Cacak', 2),
+            ('Uzice', 2),
+            ('Moskva', 3),
+            ('Kijev', 4),
+            ('Trebinje', 5),
+            ('Vasington', 6),
+            ('Maribor', 7),
+            ('Rim', 8),
+            ('Pariz', 9),
+            ('Kopenhagen', 10),
+            ('Sofija', 11);
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -23,12 +23,12 @@ public class CountryService {
     private final CountryMapper countryMapper;
 
 
-    public Page<Country> findPageble(Pageable pageable) {
-        return countryRepository.findAll(pageable);
+    public Page<Country> findPageable(Pageable pageable) {
+        return countryRepository.findAllUsingJPQL(pageable);
 
     }
 
-    public List<Country> findAllBetterMethodPageable(Pageable pageable)
+    public List<Country> findAllBetterMethod(Pageable pageable)
     {
         Page<Integer> countryIdsPage = countryRepository.findIdsPageable(pageable); // [1, 2, 3]
         List<Integer> countryIds = countryIdsPage.getContent();
