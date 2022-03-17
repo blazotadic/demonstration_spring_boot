@@ -5,5 +5,7 @@
 
     <include file="./changesets/2022031714580000_add_users.xml" relativeToChangelogFile="true" />
     <include file="./changesets/2022031715140000_add_roles.xml" relativeToChangelogFile="true" />
+    <include file="./changesets/2022031719060000_add_countries.xml" relativeToChangelogFile="true" />
+
 
 </databaseChangeLog>
