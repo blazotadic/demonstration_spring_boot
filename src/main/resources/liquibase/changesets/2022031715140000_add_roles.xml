@@ -1,0 +1,26 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="2022031715140000" author="blazo" context="dev">
+
+        <sql>
+            INSERT INTO role(name, description)
+            VALUES
+            ('Java developer', 'description'),
+            ('Javascript developer', 'description'),
+            ('Typescript developer', 'description'),
+            ('Kotlin developer', 'description'),
+            ('C++', 'description'),
+            ('Python developer', 'description');
+        </sql>
+
+
+
+
+    </changeSet>
+
+
+</databaseChangeLog>

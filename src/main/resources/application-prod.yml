@@ -9,15 +9,9 @@ spring:
 #server:
 #  port: 8080
 
-liquibase:
-  contexts: prod
+  liquibase:
+    contexts: prod
 
-# custom twitter configuration
-twitter-api:
-  url: https://prod.twitter.com/api/v1/get-tweets
-  username: account-prod-username
-  password: account-prod-password
-  authentication-token: 123asdlakjlk1j23lk1j2l3k
 
 fake-store-api:
   base-url:  https://fakestoreapi.com

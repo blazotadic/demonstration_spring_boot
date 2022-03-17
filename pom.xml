@@ -41,6 +41,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
 <!--od-->
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -65,6 +66,13 @@
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- Liquibase Dependency -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>4.4.0</version>
         </dependency>
         <!--do-->
     </dependencies>
