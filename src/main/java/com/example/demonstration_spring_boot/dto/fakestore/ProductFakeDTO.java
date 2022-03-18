@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProductFakeDTO {
+    public class ProductFakeDTO {
 
     private Integer id;
     private String title;

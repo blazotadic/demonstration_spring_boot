@@ -1,11 +1,11 @@
 package com.example.demonstration_spring_boot.service;
 
+import com.example.demonstration_spring_boot.dto.fakestore.CartExtendedDTO;
 import com.example.demonstration_spring_boot.dto.fakestore.ProductFakeDTO;
 import com.example.demonstration_spring_boot.dto.fakestore.ProductFakeInsertDTO;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -79,6 +79,24 @@ public class FakeService {
         {
             LOGGER.error("Error has been occurred while deleting product. Message: {}", e.getMessage());
             return Optional.empty();
+        }
+    }
+
+    public CartExtendedDTO findFakeById(Integer id)
+    {
+        String url = "https://fakestoreapi.com/carts/" + id;
+        try
+        {
+            ResponseEntity<CartExtendedDTO> responseEntity = secureRestTemplate.exchange(
+                    url, HttpMethod.GET, null, CartExtendedDTO.class
+            );
+
+            return responseEntity.getBody();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
         }
     }
 
