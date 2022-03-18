@@ -7,6 +7,7 @@ import com.example.demonstration_spring_boot.entity.User;
 import com.example.demonstration_spring_boot.mapper.RoleMapper;
 import com.example.demonstration_spring_boot.mapper.UserMapper;
 import com.example.demonstration_spring_boot.repository.UserRepository;
+import com.example.demonstration_spring_boot.search.UserSearchSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,6 @@ public class UserService {
     private final UserMapper userMapper;
     private final RoleMapper roleMapper;
     private final UserRepository userRepository;
-
 
     public UserWithDetailDTO save(UserWithDetailDTO userWithDetailDTO)
     {
@@ -57,8 +57,12 @@ public class UserService {
             .map(userMapper::toUserWithDetailDTO).collect(Collectors.toList());
     }
 
-
     public boolean existsByUsername(String username) {
         return userRepository.existsByUsername(username);
+    }
+
+    public List<User> customSearch(UserSearchSpecification userSearchSpecification)
+    {
+        return userRepository.findAll(userSearchSpecification);
     }
 }

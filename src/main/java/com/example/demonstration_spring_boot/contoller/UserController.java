@@ -3,6 +3,8 @@ package com.example.demonstration_spring_boot.contoller;
 import com.example.demonstration_spring_boot.dto.RoleDTO;
 import com.example.demonstration_spring_boot.dto.UserWithDetailDTO;
 import com.example.demonstration_spring_boot.entity.User;
+import com.example.demonstration_spring_boot.search.UserSearch;
+import com.example.demonstration_spring_boot.search.UserSearchSpecification;
 import com.example.demonstration_spring_boot.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,7 +21,6 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userService;
-
 
     @PutMapping(value = "{id}/add-role")
     public ResponseEntity<User> updateUserRole(@PathVariable Integer id, @RequestBody RoleDTO role)
@@ -50,5 +51,13 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
+    @GetMapping(value = "custom-search")
+    public ResponseEntity<List<User>> customSearch(UserSearch userSearch)
+    {
+        UserSearchSpecification userSearchSpecification = new UserSearchSpecification(userSearch);
+        List<User> users = userService.customSearch(userSearchSpecification);
+
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
 
 }
