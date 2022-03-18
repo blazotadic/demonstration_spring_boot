@@ -11,11 +11,10 @@ import java.io.Serializable;
 @Setter
 @ToString
 @NoArgsConstructor
-public class CountryDTO implements Serializable {
+public class CityDTO implements Serializable {
 
     private Integer id;
-    private String code;
     private String name;
-
+    private CountryDTO country;
 
 }
