@@ -44,10 +44,10 @@ public class CountryController {
         return new ResponseEntity<>(HttpStatus.CREATED); // 201!
     }
 
-    @PutMapping(value = "{id}")
-    public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody CountryDTO countryDTO)
+    @PutMapping(value = "update")
+    public ResponseEntity<Void> update( @RequestBody CountryDTO countryDTO)
     {
-        countryService.update(id, countryDTO);
+        countryService.update(countryDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

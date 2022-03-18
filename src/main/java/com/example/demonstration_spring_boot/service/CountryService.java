@@ -49,9 +49,9 @@ public class CountryService {
     }
 
     @Transactional
-    public void update(Integer id, CountryDTO countryDTO)
+    public void update(CountryDTO countryDTO)
     {
-        if (countryRepository.findById(id).isPresent())
+        if (countryRepository.findById(countryDTO.getId()).isPresent())
         {
             Country country = countryMapper.toEntity(countryDTO);
             countryRepository.save(country);
