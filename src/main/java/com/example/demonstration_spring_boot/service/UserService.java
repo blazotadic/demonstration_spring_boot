@@ -8,7 +8,9 @@ import com.example.demonstration_spring_boot.mapper.RoleMapper;
 import com.example.demonstration_spring_boot.mapper.UserMapper;
 import com.example.demonstration_spring_boot.repository.UserRepository;
 import com.example.demonstration_spring_boot.search.UserSearchSpecification;
+import com.example.demonstration_spring_boot.security.dto.UserCreateDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -25,6 +27,7 @@ public class UserService {
     private final UserMapper userMapper;
     private final RoleMapper roleMapper;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public UserWithDetailDTO save(UserWithDetailDTO userWithDetailDTO)
     {
@@ -64,5 +67,15 @@ public class UserService {
     public List<User> customSearch(UserSearchSpecification userSearchSpecification)
     {
         return userRepository.findAll(userSearchSpecification);
+    }
+
+    public void register(UserCreateDTO userCreateDTO)
+    {
+        String encodedPassword = passwordEncoder.encode(userCreateDTO.getPassword());
+
+        User user = userMapper.fromUserCreateToEntity(userCreateDTO);
+        user.setPassword(encodedPassword);
+
+        userRepository.save(user);
     }
 }

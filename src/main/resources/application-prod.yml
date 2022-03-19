@@ -19,4 +19,4 @@ fake-store-api:
   category-part: /api/categories
   cart-part: /api/cart
 
-auth-key: LogateAcademy2022
+auth-key: DemonstrationProject

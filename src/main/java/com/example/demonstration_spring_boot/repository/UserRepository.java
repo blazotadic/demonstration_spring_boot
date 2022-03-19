@@ -14,10 +14,12 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
     @Query(value = "select user from User user left join fetch user.roles where user.id = :id")
     Optional<User> findWithRolesById(@Param("id") Integer id);
 
+    boolean existsByUsername(String username);
+
     @Query(value = "select user " +
             "from User user " +
             "left join fetch user.userDetail " +
             "left join fetch user.roles " +
             "where user.username = :username and user.isActive = true ")
-    boolean existsByUsername(String username);
+    User findByUsername(@Param("username") String username);
 }
